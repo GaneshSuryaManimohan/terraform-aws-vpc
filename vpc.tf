@@ -162,13 +162,13 @@ resource "aws_route" "public_route" {
 resource "aws_route" "private_route_nat" {
   route_table_id            = aws_route_table.private.id
   destination_cidr_block    = "0.0.0.0/0"
-  nat_gateway_id = aws_nat_gateway.NAT.id
+  nat_gateway_id = aws_nat_gateway.nat.id
 }
 
 resource "aws_route" "db_route_nat" {
   route_table_id            = aws_route_table.db.id
   destination_cidr_block    = "0.0.0.0/0"
-  nat_gateway_id = aws_nat_gateway.NAT.id
+  nat_gateway_id = aws_nat_gateway.nat.id
 }
 
 ### Associating the route tables to subnets ###
