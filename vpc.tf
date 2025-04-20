@@ -90,13 +90,13 @@ resource "aws_db_subnet_group" "default" {
 }
 
 ### Elastic IP ###
-resource "aws_eip" "NAT" {
+resource "aws_eip" "nat" {
   domain   = "vpc"
 }
 
 ### NAT Gateway ###
-resource "aws_nat_gateway" "NAT" {
-  allocation_id = aws_eip.NAT.id
+resource "aws_nat_gateway" "nat" {
+  allocation_id = aws_eip.nat.id
   subnet_id     = aws_subnet.public[0].id
 
  tags = merge(
