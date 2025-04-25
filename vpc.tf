@@ -175,8 +175,8 @@ resource "aws_route" "db_route_nat" {
 
 resource "aws_route_table_association" "public" {
   count = length(var.public_subnet_cidrs) # as 2 public subnets needs to be associated with 1 public route table
-  subnet_id      = aws_subnet.public[count.index].id
-  #subnet_id      = element(aws_subnet.public[*].id, count.index) # alternative approach 
+  #subnet_id      = aws_subnet.public[count.index].id # alternative approach 
+  subnet_id      = element(aws_subnet.public[*].id, count.index) 
   route_table_id = aws_route_table.public.id
 }
 
